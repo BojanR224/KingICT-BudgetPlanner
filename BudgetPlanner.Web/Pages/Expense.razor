@@ -1,0 +1,82 @@
+﻿@page "/expense"
+@inherits ExpenseBase
+
+<h3>Expense</h3>
+
+<!-- Expense Input Form -->
+<div class="form-group">
+    <label>Month:</label>
+    <input type="text" @bind="NewExpense.Month" class="form-control" />
+</div>
+
+<div class="form-group">
+    <label>Year:</label>
+    <input type="number" @bind="NewExpense.Year" class="form-control"/>
+</div>
+
+<div class="form-group">
+    <label>Category:</label>
+    <select @bind="NewExpense.CategoryId" class="form-control">
+        @foreach (var category in ExpenseCategories)
+        {
+            <option value="@category.Id">@category.Name</option>
+        }
+        </select>
+</div>
+
+<div class="form-group">
+    <label>Amount:</label>
+    <input type="number" @bind="NewExpense.Amount" step="0.01" class="form-control" />
+</div>
+
+<div class="form-group">
+    <label>Is Planned:</label>
+    <input type="checkbox" @bind="NewExpense.IsPlanned" />
+</div>
+
+<button class="btn btn-primary" @onclick="AddOrUpdateExpense">@(EditIndex == null ? "Add Expense" : "Update Expense")</button>
+@if (EditIndex != null)
+{
+    <button class="btn btn-secondary" @onclick="CancelEdit">Cancel</button>
+}
+
+@if (Expenses == null)
+{
+    <h3>Loading Expenses...</h3>
+}
+else if (!Expenses.Any())
+{
+    <h3>No Expenses Found</h3>
+}
+else
+{
+    <h3>Expenses List</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Year</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Is Planned</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var expense in Expenses)
+            {
+                <tr>
+                    <td>@expense.Month</td>
+                    <td>@expense.Year</td>
+                    <td>@expense.CategoryName</td>
+                    <td>@expense.Amount</td>
+                    <td>@(expense.IsPlanned ? "Yes" : "No")</td>
+                    <td>
+                        <button class="btn btn-warning" @onclick="() => EditExpense(expense)">Edit</button>
+                        <button class="btn btn-danger" @onclick="() => DeleteExpense(expense.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,57 @@
+﻿@page "/"
+@inherits IndexBase
+
+<PageTitle>Index</PageTitle>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            @foreach (var month in AvailableMonths)
+            {
+            <th colspan="2"> @month </th>
+            }
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td></td>
+            @foreach (var month in AvailableMonths)
+            {
+                <td>предлог</td>
+                <td>реални</td>
+            }
+
+        </tr>
+        @foreach (var incomeCategories in IncomeCategories)
+        {
+            <tr>
+                <td>@incomeCategories.Name</td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+        <tr>
+            <td><strong>Вкупно Приходи</strong></td>
+            @foreach (var item in IncomeTable)
+            {
+                <td>@item.Value.Item1</td>
+                <td>@item.Value.Item2</td>
+            })
+        </tr>
+        @foreach (var expenseCategories in ExpenseCategories)
+        {
+            <tr>
+                <td>@expenseCategories.Name</td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+        <tr>
+            <td><strong>Вкупно Приходи</strong></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

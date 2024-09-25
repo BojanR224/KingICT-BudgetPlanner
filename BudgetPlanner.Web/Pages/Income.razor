@@ -1,0 +1,81 @@
+﻿@page "/income"
+@inherits IncomeBase
+
+<h3>Income</h3>
+
+<div class="form-group">
+    <label>Month:</label>
+    <input type="text" @bind="NewIncome.Month" class="form-control" />
+</div>
+
+<div class="form-group">
+    <label>Year:</label>
+    <input type="number" @bind="NewIncome.Year" class="form-control" />
+</div>
+
+<div class="form-group">
+    <label>Category:</label>
+    <select @bind="NewIncome.CategoryId" class="form-control">
+        @foreach (var category in IncomeCategories)
+        {
+            <option value="@category.Id">@category.Name</option>
+        }
+    </select>
+</div>
+
+<div class="form-group">
+    <label>Amount:</label>
+    <input type="number" @bind="NewIncome.Amount" step="0.01" class="form-control" />
+</div>
+
+<div class="form-group">
+    <label>Is Planned:</label>
+    <input type="checkbox" @bind="NewIncome.IsPlanned" />
+</div>
+
+<button class="btn btn-primary" @onclick="AddOrUpdateIncome">@(EditIndex == null ? "Add Income" : "Update Income")</button>
+@if (EditIndex != null)
+{
+    <button class="btn btn-secondary" @onclick="CancelEdit">Cancel</button>
+}
+
+@if (Incomes == null)
+{
+    <h3>Loading Income...</h3>
+}
+else if (!Incomes.Any())
+{
+    <h3>No Incomes Found</h3>
+}
+else
+{
+    <h3>Income List</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Year</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Is Planned</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var income in Incomes)
+            {
+                <tr>
+                    <td>@income.Month</td>
+                    <td>@income.Year</td>
+                    <td>@income.CategoryName</td>
+                    <td>@income.Amount</td>
+                    <td>@(income.IsPlanned ? "Yes" : "No")</td>
+                    <td>
+                        <button class="btn btn-warning" @onclick="() => EditIncome(income)">Edit</button>
+                        <button class="btn btn-danger" @onclick="() => DeleteIncome(income.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
