@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [BOJANROBEV\bojan]
+    FROM WINDOWS;
+

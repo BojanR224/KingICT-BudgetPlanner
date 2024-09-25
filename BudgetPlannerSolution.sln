@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BudgetPlanner.Api", "Budget
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BudgetPlanner.Models", "BudgetPlanner.Models\BudgetPlanner.Models.csproj", "{3285DC64-3873-4EF6-96FF-1E0A34DD5BE9}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Db", "Db\Db.sqlproj", "{D8543B70-7EB7-49F5-9BC6-214B890F70C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,12 @@ Global
 		{3285DC64-3873-4EF6-96FF-1E0A34DD5BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3285DC64-3873-4EF6-96FF-1E0A34DD5BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3285DC64-3873-4EF6-96FF-1E0A34DD5BE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8543B70-7EB7-49F5-9BC6-214B890F70C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8543B70-7EB7-49F5-9BC6-214B890F70C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8543B70-7EB7-49F5-9BC6-214B890F70C0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D8543B70-7EB7-49F5-9BC6-214B890F70C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8543B70-7EB7-49F5-9BC6-214B890F70C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8543B70-7EB7-49F5-9BC6-214B890F70C0}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
